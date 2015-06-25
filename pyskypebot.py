@@ -13,10 +13,10 @@ driver = None
 def launch():
   print("Loading...")
   global driver
-  driver = webdriver.PhantomJS("phantomjs-2.0.0-windows\\bin\\phantomjs.exe")
-  driver.set_window_size(1024, 768)
-  # driver = webdriver.Chrome()
+  # driver = webdriver.PhantomJS("phantomjs-2.0.0-windows\\bin\\phantomjs.exe")
+  driver = webdriver.Chrome()
   driver.get('https://web.skype.com/')
+  driver.set_window_size(1024, 768)
   print("Loaded Skype!")
 
 def signIn(userName, password):
@@ -75,6 +75,9 @@ def recent(tileName):
   for recentTile in recents():
     if getTileName(recentTile) == tileName:
       return recentTile
+
+def ss(path="ss.png"):
+  driver.save_screenshot(path)
 
 if __name__ == "__main__":
   print("Starting up...")
